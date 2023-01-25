@@ -81,3 +81,23 @@
   min-height: 500px;
   display: flex;
 }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+i {
+  transition: 0.6s;
+}
+
+i:hover {
+  color: #dce123;
+}
