@@ -1,0 +1,22 @@
+.header {
+  background-color: #00143f;
+  color: #fff;
+}
+
+.sidebar {
+  background-color: #00143f;
+  color: #fff;
+}
+
+.main {
+  color: #00143f;
+}
+
+.icon {
+  color: #00143f;
+  transition: 0.5s;
+}
+
+.icon:hover {
+  color: #dce123;
+}

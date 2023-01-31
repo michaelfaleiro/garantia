@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./src//script/js.js" defer></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <div class="col-12  min-vh-100">
+            <div class="row">
+                <div class="row-2 header d-flex justify-content-between">
+                    <div>menu</div>
+                    <h1>Processo de Garantia</h1>
+                    <div>
+                        <p>User</p>
+                        <p>Logout</p>
+                    </div>
+                </div>
+                <div class="row-10 min-vh-100 main d-flex flex-column align-items-center">
+                    <h3 class="text-center ">Garantia</h3>
+                    <form id="formGarantia" action="" class=" w-50 bg-light">
+                        <div class=" pb-2 d-flex flex-column flex-wrap">
+                            <h5 class="text-center">Dados da Compra</h5>
+                            <div class="d-flex justify-content-evenly align-items-center">
+                                <label class="form-label" for="nfe">
+                                    Nota fiscal:
+                                    <input class="form-control" id="nfe" type="text">
+                                </label>
+
+                                <label class="form-label" for="dataNfe">
+                                    Data da Nota Fiscal:
+                                    <input class="form-control" id="dataNfe" type="date">
+                                </label>
+
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column flex-wrap">
+                            <h5 class="text-center">Dados do Produto</h5>
+                            <div class="d-flex justify-content-evenly align-items-center">
+                                <label class="form-label col-2" for="sku">SKU:
+                                    <input class="form-control" type="text" id="sku" name="sku" placeholder="Código">
+                                </label>
+
+                                <label class="form-label col-sm-6" for="produtoName">Produto:
+                                    <input class="form-control" type="text" id="produtoName" name="produtoName"
+                                        placeholder="Produto">
+                                </label>
+
+                                <label class="form-label col-sm-1" for="quantidade">Quant:
+                                    <input class="form-control" type="number" id="quantidade" name="quantidade"
+                                        placeholder="" value="1">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-check d-flex flex-column justify-content-center">
+                            <label for="defeito">Defeito:</label>
+                            <div class="input-group w-75">
+                                <textarea class="form-control" id="defeito" aria-label="With textarea"
+                                    name="defeito"></textarea>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end pt-2">
+                            <button class="btn btn-outline-primary " type="button"
+                                onclick="validarForm()">Adicionar</button>
+                        </div>
+                        <table class="table">
+                            <thead>
+
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Sku</th>
+                                    <th>Produto</th>
+                                    <th>Quant</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody">
+                                <!-- <tr>
+                                     <td>MONROE-G25125</td>
+                                    <td>Amortecedor Dianteiro Esquerdo</td>
+                                    <td>1</td>
+                                    <td>
+                                        <i class="fa-sharp fa-solid fa-file-pen icon" onclick="editItem()"></i>
+                                        <i id="btn-delete" class="fa-solid fa-trash icon" onclick="deleteItem()"></i>
+                                    </td> 
+                                </tr> -->
+                            </tbody>
+                        </table>
+                    </form>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
