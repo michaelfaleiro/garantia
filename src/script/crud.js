@@ -1,4 +1,4 @@
-let id = 1;
+let id = 0;
 
 //Validar Form
 function validateForm() {
@@ -36,7 +36,7 @@ function showData() {
     html += `<td> ${produto.defeito} </td>`;
     html += `<td>
         <button class="btn btn-warning" type="button" onclick="updateData(${index})">Editar</button>
-        <button class="btn btn-danger" type="button" onclick="deleteData(${index})">Remover</button>
+        <button class="btn btn-danger delete " type="button" onclick="deleteData(${index})">Remover</button>
         </td>`;
     html += "<td>";
     document.querySelector("#crudTable tbody").innerHTML = html;
@@ -63,7 +63,7 @@ function addData() {
     }
 
     produtoList.push({
-      id: id++,
+      id: Date.now().toString(),
       nfe: nfe,
       sku: sku,
       produtoName: produtoName,
@@ -90,6 +90,14 @@ function deleteData(index) {
   localStorage.setItem("produtoList", JSON.stringify(produtoList));
   showData();
 }
+
+document.querySelector("#garantia-list").addEventListener("click", (e) => {
+  target = e.target;
+  if (target.classList.contains("delete")) {
+    target.parentElement.parentElement.remove();
+    showAlert("Removido com Sucesso", "danger");
+  }
+});
 
 //Atualizar Dados
 function updateData(index) {
@@ -125,15 +133,9 @@ function updateData(index) {
       document.querySelector("#submit").style.display = "block";
       document.querySelector("#update").style.display = "none";
     }
+    showAlert("Atualizado", "success");
   };
 }
-
-const clearFields = () => {
-  document.querySelector("#sku").value = "";
-  document.querySelector("#produtoName").value = "";
-  document.querySelector("#quantidade").value = 1;
-  document.querySelector("#defeito").value = "";
-};
 
 //Enviar para o BackEnd
 async function enviarDados() {
@@ -144,14 +146,42 @@ async function enviarDados() {
     produtoList = JSON.parse(localStorage.getItem("produtoList"));
   }
 
-  const garantias = [{ ...produtoList }];
+  const idNfe = produtoList[0].nfe;
+
+  let garantias = {
+    id: produtoList[0].nfe,
+    produtos: [],
+  };
+
+  garantias.produtos = [...produtoList];
 
   const response = await fetch("http://localhost:3000/garantias", {
     method: "POST",
     headers: {
-      "Content-Type": "application/jsonn",
+      "Content-Type": "application/json",
     },
     body: JSON.stringify(garantias),
   });
-  console.log(garantias);
+  showAlert("Enviado com sucesso", "success");
+  location.href = "./home.html";
 }
+
+//Alertas
+function showAlert(message, className) {
+  const div = document.createElement("div");
+  div.className = `alert alert-${className}`;
+  div.appendChild(document.createTextNode(message));
+  const container = document.querySelector(".container");
+  const main = document.querySelector(".main");
+  container.before(div, main);
+
+  setTimeout(() => document.querySelector(".alert").remove(), 3000);
+}
+
+//Limpar inputs
+const clearFields = () => {
+  document.querySelector("#sku").value = "";
+  document.querySelector("#produtoName").value = "";
+  document.querySelector("#quantidade").value = 1;
+  document.querySelector("#defeito").value = "";
+};
