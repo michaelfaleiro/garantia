@@ -20,3 +20,11 @@
 .icon:hover {
   color: #dce123;
 }
+
+#update {
+  display: none;
+}
+
+#submit {
+  display: block;
+}

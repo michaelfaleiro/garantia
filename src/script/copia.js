@@ -26,6 +26,8 @@ document.querySelector("#formGarantia").addEventListener("submit", (e) => {
   e.preventDefault();
 
   //Get Form Values
+  const nfe = document.querySelector("#nfe").value;
+  const dataNfe = document.querySelector("#dataNfe").value;
   const sku = document.querySelector("#sku").value;
   const produtoName = document.querySelector("#produtoName").value;
   const quantidade = document.querySelector("#quantidade").value;
