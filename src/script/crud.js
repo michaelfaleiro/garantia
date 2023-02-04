@@ -151,7 +151,7 @@ async function enviarDados() {
     headers: {
       "Content-Type": "application/jsonn",
     },
-    body: garantias,
+    body: JSON.stringify(garantias),
   });
   console.log(garantias);
 }
